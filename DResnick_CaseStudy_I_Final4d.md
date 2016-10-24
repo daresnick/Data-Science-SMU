@@ -41,7 +41,7 @@ library(repmis)
 
 setwd(".")
 ```
-
+<br><br>
 
 #### Upload the data from the web and load data into two raw data sets in R.
 ##### This method is quick, but the data is only saved in active memory not on the hard drive.
