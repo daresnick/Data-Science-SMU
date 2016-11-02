@@ -2,10 +2,6 @@
 Damon Resnick  
 November  3, 2016  
 
-<p align = "center">
-<img src = "/logo-wb-header-en.svg">
-</p>
-
 ### Introduction
 Gross Domestic product and Education data was downloaded from the [World Bank website](http://www.worldbank.org/). The data was cleaned, tidied, and merged together to form a data set that could be analyzed to answer these five questions:  
 
