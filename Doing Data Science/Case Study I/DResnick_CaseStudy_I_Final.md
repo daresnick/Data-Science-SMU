@@ -1,6 +1,6 @@
 # Case Study I: Rankings study of the top 190 GDPs
 Damon Resnick  
-Novemeber 3, 2016  
+November 3, 2016  
 
 ### Introduction
 Gross Domestic product and Education data was downloaded from the [World Bank website](http://www.worldbank.org/). The data was cleaned, tidied, and merged together to form a data set that could be analyzed to answer these five questions:  
@@ -47,7 +47,7 @@ getwd()
 ```
 
 ```
-## [1] "C:/Users/hp/Desktop/SMU/Doing Data Science/Homework/Case Studies/Case Study I a"
+## [1] "C:/Users/hp/Documents/GitHub/Data-Science-SMU/Doing Data Science/Case Study I"
 ```
 <br>  
 
