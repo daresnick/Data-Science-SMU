@@ -2,7 +2,6 @@
 Damon Resnick  
 November  3, 2016  
 
-
 <p align = "center">
 <img src = "/logo-wb-header-en.svg">
 </p>
