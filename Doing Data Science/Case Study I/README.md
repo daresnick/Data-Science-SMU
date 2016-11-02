@@ -11,7 +11,7 @@ Gross Domestic product and Education data was downloaded from the [World Bank we
 4)  Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.  
 5)  Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income Group. How many countries are Lower middle income but among the 38 nations with highest GDP?   
 
-The organization of this repo is as followed:  
+### The organization of this repo is as followed:  
 analysis -- holds the script code files for anaylsis  
 data -- holds the raw data, tidy data, and download script code  
 DResnick_CaseStudy_I_Final.RMD -- is the R markdown file that uses the R scripts to run the code and present the answers  
