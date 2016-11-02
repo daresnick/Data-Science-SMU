@@ -1,6 +1,6 @@
 ### Files contained in this folder and explanation of the variables in the final data set:  
 
-- **cleanned GDPall**: this file contains the final data set after analysis with these variables:  
+- **cleaned GDPall**: this file contains the final data set after analysis with these variables:  
     CountryCode --  Country short codes  
     Rank --         GDP rank out of the 190 countries with recorded GDPs  
     LongName.x --   Full name of the country  
