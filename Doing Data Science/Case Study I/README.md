@@ -20,7 +20,7 @@ DResnick_CaseStudy_I_Final.md - is the markdown file easily viewed online using 
 
 #### The RMD file is designed to be run independenty of all the other files. All you must due is download it into RStudio and set the working directory.  The other files and scripts are not needed generate the report.  They are only provided to help with reproducibility.
 
-### Data from:
+### Original data from:
 - Load the Gross Domestic Product data for the 190 ranked countries in this data set:
   https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv
 - Load the educational data from this data set:
