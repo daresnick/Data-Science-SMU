@@ -6,7 +6,7 @@
     LongName.x --   Full name of the country  
     GDP --          Gross Domestic Product in millions of US dollars  
     IncomeGroup --  Every country but one is put into one of five specific income groups:  
-                    _Low income, Lower middle income, Upper middle income, High income: nonOECD, and High income: OECD_  
+                          _Low income, Lower middle income, Upper middle income, High income: nonOECD, and High income: OECD_  
                     
 
 
