@@ -1,11 +1,11 @@
 ---
-title: "Case Study I: Rankings study of the top 190 GDPs"
+title: 'Case Study I: Rankings study of the top 190 GDPs'
 author: "Damon Resnick"
 date: "November 3, 2016"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
   word_document: default
 ---
 
