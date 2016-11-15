@@ -1,0 +1,127 @@
+---
+title: "Live Session Unit 10 Assignment"
+author: "Damon Resnick"
+date: "November 17, 2016"
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+  word_document: default
+---
+
+### Load Data
+
+```{r}
+ny19rawdata <- read.csv("./nyt19.csv", header=TRUE)
+#summary(ny19rawdata)
+#str(ny19rawdata)
+
+## https://rpubs.com/tmcfl/simulated-click-analysis
+
+```
+
+
+```{r}
+nyt19data <- ny19rawdata
+nyt19data$ageGroup <- cut(nyt19data$Age, c(-Inf, 18, 24, 34, 44, 54, 64, Inf))
+levels(nyt19data$ageGroup) <- c("<18","18-24","25-34","35-44","45-54","55-64","65+")
+
+## Create object ImpSub for rest of analysis as well as CTR variable of click through rate
+ImpSub<- subset(nyt19data, Impressions>0)
+ImpSub$CTR <- ImpSub$Clicks/ImpSub$Impressions
+#head(ImpSub)
+
+
+## Make ImpSub$CTR factor with right breaks and levels
+ImpSub$CTR <- cut(ImpSub$Clicks/ImpSub$Impressions,c(-Inf, .2, .4, .6, .8, Inf) )
+levels(ImpSub$CTR) <- c("<.2",".2-.4",".4-.6",".6-.8",">.8")
+
+
+## Find total number of males, male impressions, male clicks, and male signed_in
+ImpSubMale <- subset(ImpSub, Gender==1)
+#summary(ImpSubMale)
+#str(ImpSubMale)
+## Number of Males:
+nrow(ImpSubMale)
+## Number of Male Impressions:
+sum(ImpSubMale$Impressions)
+## Number of Male Clicks:
+sum(ImpSubMale$Clicks)
+## Number of Male Signed_In:
+sum(ImpSubMale$Signed_In)
+length(which(ImpSubMale$Signed_In == 1))
+
+
+## Find mean of Age, Impressions, Clicks, and CTR, and percentage of males and signed_In
+mean(ImpSub$Age)
+mean(ImpSub$Impressions)
+mean(ImpSub$Clicks)
+mean(ImpSub$CTR)
+paste(length(which(ImpSub$Gender == 1))/length(ImpSub$Gender)*100,"%",sep="")
+paste(length(which(ImpSub$Signed_In == 1))/length(ImpSub$Signed_In)*100,"%",sep="")
+
+
+## Number of Males and Females the factor way:
+#summary(ImpSub)
+ImpSub$GenderFactor <- cut(ImpSub$Gender, c(-Inf,0,Inf))
+levels(ImpSub$GenderFactor) <- c("Female","Male")
+summary(ImpSub$GenderFactor)
+```
+
+
+```{r}
+
+## Get the means of Impressions, Clicks, CTR and percentage of males and signed_In by AgeGroup.
+#aggregate(ImpSub$Impressions ~ ImpSub$ageGroup, FUN = mean)
+tapply(ImpSub$Impressions, ImpSub$ageGroup, FUN = mean)
+#aggregate(ImpSub$Clicks ~ ImpSub$ageGroup, FUN = mean)
+tapply(ImpSub$Clicks, ImpSub$ageGroup, FUN = mean)
+#aggregate(as.numeric(ImpSub$CTR) ~ ImpSub$ageGroup, FUN = mean)
+tapply(as.numeric(ImpSub$CTR), ImpSub$ageGroup, FUN = mean)
+# Percentage of males by AgeGroup
+tapply(ImpSub$Gender, ImpSub$ageGroup, FUN = sum)/length(ImpSub$Gender)*100
+# Percentage of signed_In by AgeGroup
+tapply(ImpSub$Signed_In, ImpSub$ageGroup, FUN = sum)/length(ImpSub$Signed_In)*100
+
+```
+
+```{r}
+## Create a table of CTRGroup vs AgeGroup counts.
+#str(ImpSub)
+table(ImpSub$CTR,ImpSub$ageGroup)
+
+```
+
+```{r}
+
+## Plot distributions of number impressions and clickthrough - rate (CTR = click/impression) for the age groups
+
+nyt19data <- ny19rawdata
+nyt19data$ageGroup <- cut(nyt19data$Age, c(-Inf, 18, 24, 34, 44, 54, 64, Inf))
+levels(nyt19data$ageGroup) <- c("<18","18-24","25-34","35-44","45-54","55-64","65+")
+
+## Create object ImpSub for rest of analysis as well as CTR variable of click through rate
+ImpSub<- subset(nyt19data, Impressions>0)
+ImpSub$CTR <- ImpSub$Clicks/ImpSub$Impressions
+#head(ImpSub)
+
+library(ggplot2)
+
+## Histogram of Impressions by ageGroup 
+ggplot(ImpSub, aes(x=Impressions, fill=ageGroup))+geom_histogram(binwidth = 1)
+
+
+## Histogram of Click through rate (CTR) above 0 by ageGroup
+ggplot(subset(ImpSub, CTR>0), aes(x=CTR, fill=ageGroup))+ labs(title="Click-through rate by age group (05/19/2012)")+ geom_histogram(binwidth = .025)
+
+
+## One more plot you think which is important to look at.
+
+## Histogram of all Click through rates (CTR) by ageGroup
+ggplot(ImpSub, aes(x=CTR, fill=ageGroup))+ labs(title="Click-through rate by age group (05/19/2012)")+ geom_histogram(binwidth = .025)
+
+```
+
+
+
+
